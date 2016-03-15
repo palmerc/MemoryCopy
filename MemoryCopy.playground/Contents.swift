@@ -35,8 +35,8 @@ let dcopyTime = executionTimeInterval {
 print("cblas_dcopy: \(dcopyTime) seconds")
 
 memset(memory, 0, size)
+let data = NSData(bytesNoCopy: &values, length: byteCount, freeWhenDone: false)
 let nsdataTime = executionTimeInterval {
-    let data = NSData(bytesNoCopy: &values, length: byteCount, freeWhenDone: false)
     data.getBytes(memory, length: byteCount)
 }
 print("nsdata: \(nsdataTime) seconds")
